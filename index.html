@@ -29,7 +29,7 @@
             padding: 20px;
         }
 
-        #initEdit, #initSave {
+        #initEdit, #initSave, #initUnload {
             display: none;
         }
     </style>
@@ -37,6 +37,7 @@
     <fieldset>
         <button id="initEdit">Edit</button>
         <button id="initSave">Save</button>
+        <button id="initUnload">Unload Plugin</button>
     </fieldset>
 
     <div class="content">
@@ -50,6 +51,7 @@
                 $(window).on('edt-auth-success', function(data) {
                     $("#initEdit").fadeIn("fast");
                     $("#initSave").fadeIn("fast");
+                    $("#initUnload").fadeIn("fast");
 
                     $("#initEdit").bind("click", function() {
                         $.editorator("initEdit");
@@ -58,6 +60,11 @@
 
                     $("#initSave").bind("click", function() {
                         $.editorator("persist");
+                    });
+
+                    $("#initUnload").bind("click", function() {
+                        $.editorator("unload");
+                        $("#initEdit").fadeIn("fast");
                     });
                 });
 

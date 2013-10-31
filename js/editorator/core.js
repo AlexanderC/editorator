@@ -134,6 +134,10 @@
         },
         initEdit: function(options)
         {
+            if(storage.isEdit) {
+                throw new RuntimeException("Already in edit mode");
+            }
+            
             if(!storage.items) {
                 methods.init(options);
             }
@@ -190,6 +194,18 @@
         },
         unload: function()
         {
+            if(!storage.items) {
+                throw new RuntimeException("You must init this first");
+            }
+
+            if(storage.isEdit) {
+                storage.items.each(function() {
+                    var item = $(this);
+                    var content = item.find('.' + opt.activePlaceholderClass).val();
+                    item.html(content);
+                });
+            }
+
             // TODO: unload all the things
             $(window).trigger(events.onUnload, [storage.items]);
             storage.items = undefined;
