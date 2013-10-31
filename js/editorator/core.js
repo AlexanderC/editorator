@@ -50,6 +50,7 @@
         },
         pushUrl: 'push.php',
         pushDataType: 'json',
+        pushPostDataKey: 'items',
         pushCallback: function(data) {
             try {
                 if(data.ok) {
@@ -80,12 +81,18 @@
         // authentication
         onAuthSuccess: "edt-auth-success",
         onAuthFail: "edt-auth-fail",
-        onUnload: "edt-unload"
+        onUnload: "edt-unload",
+        // content persist
+        beforeContentPersist: "edt-before-content-persist",
+        afterContentPersist: "edt-after-content-persist",
+        successContentPersist: "edt-success-content-persist",
+        errorContentPersist: "edt-error-content-persist"
     };
 
     var storage = {
         items: undefined,
-        isAuth: false
+        isAuth: false,
+        isEdit: false
     };
 
     var methods = {
@@ -111,7 +118,7 @@
             internals.init();
 
             // authenticate user
-            internals.call(opt.authUrl, opt.authDataType, function(data) {
+            internals.call(opt.authUrl, undefined, function(data) {
                 if(true === opt.authCallback(data)) {
                     storage.isAuth = true;
                     $(window).trigger(events.onAuthSuccess, [data]);
@@ -119,6 +126,8 @@
                     storage.isAuth = false;
                     $(window).trigger(events.onAuthFail, [data]);
                 }
+            }, {
+                dataType: opt.authDataType
             });
 
             return storage.items;
@@ -135,7 +144,49 @@
                 throw new RuntimeException("Access Denied. User was not authenticated");
             }
 
+            storage.isEdit = true;
+
             return storage.items;
+        },
+        persist: function()
+        {
+            if(!storage.items) {
+                throw new RuntimeException("You must init this first");
+            } else if(!storage.isEdit) {
+                throw new RuntimeException("You must init edit mode first");
+            }
+
+            $(window).trigger(events.beforeContentPersist, [storage.items]);
+
+            var data = {};
+
+            storage.items.each(function() {
+                var item = $(this);
+
+                data[item.data(opt.idDataKey)] = item.find('.' + opt.activePlaceholderClass).val();
+            });
+
+            var postData = {};
+            postData[opt.pushPostDataKey] = data;
+
+            internals.call(opt.pushUrl, postData, function(data) {
+                $(window).trigger(events.successContentPersist, [storage.items, data]);
+
+                if(helpers.isFunction(opt.pushCallback)) {
+                    opt.pushCallback(data);
+                }
+            }, {
+                complete: function(jqXHR, textStatus)
+                {
+                    $(window).trigger(events.afterContentPersist, [storage.items, jqXHR, textStatus]);
+                },
+                error: function(jqXHR, textStatus, errorThrown)
+                {
+                    $(window).trigger(events.errorContentPersist, [storage.items, jqXHR, textStatus, errorThrown]);
+                },
+                type: "POST",
+                dataType: opt.pushDataType
+            });
         },
         unload: function()
         {
@@ -143,6 +194,7 @@
             $(window).trigger(events.onUnload, [storage.items]);
             storage.items = undefined;
             storage.isAuth = false;
+            storage.isEdit = false;
         }
     };
 

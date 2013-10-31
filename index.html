@@ -29,12 +29,15 @@
             padding: 20px;
         }
 
-        #initEdit {
+        #initEdit, #initSave {
             display: none;
         }
     </style>
 
-    <button id="initEdit">Edit this page!</button>
+    <fieldset>
+        <button id="initEdit">Edit</button>
+        <button id="initSave">Save</button>
+    </fieldset>
 
     <div class="content">
         <div class="header edt-editable" data-edt-id="content-header-1"></div>
@@ -46,6 +49,16 @@
             $().ready(function() {
                 $(window).on('edt-auth-success', function(data) {
                     $("#initEdit").fadeIn("fast");
+                    $("#initSave").fadeIn("fast");
+
+                    $("#initEdit").bind("click", function() {
+                        $.editorator("initEdit");
+                        $(this).fadeOut("fast");
+                    });
+
+                    $("#initSave").bind("click", function() {
+                        $.editorator("persist");
+                    });
                 });
 
                 $(window).on('edt-before-item-content-load', function(event, item) {
@@ -64,11 +77,6 @@
                     authUrl: 'engine/auth.php',
                     pushUrl: 'engine/push.php',
                     pullUrl: "engine/pull.php"
-                });
-
-                $("#initEdit").bind("click", function() {
-                    $.editorator("initEdit");
-                    $(this).fadeOut("fast");
                 });
             });
         })(jQuery);
