@@ -1,0 +1,63 @@
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+
+    <title>Editorator Demo</title>
+    <meta name="description" content="Editorator- inline editor for nerds">
+    <meta name="author" content="AlexanderC">
+
+    <link rel="stylesheet" href="css/main.css">
+
+    <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+</head>
+
+<body>
+    <style>
+        .content {
+            width: 100% - 100px;
+            height: 100%;
+            margin: 0;
+            padding: 50px;
+            border: 1px solid #000;
+        }
+        .header {
+            width: 100% - 40px;
+            border: 1px dotted #0b0b0b;
+            padding: 20px;
+        }
+
+        #initEdit {
+            display: none;
+        }
+    </style>
+
+    <button id="initEdit">Edit this page!</button>
+
+    <div class="content">
+        <div class="header edt-editable" data-edt-id="content-header-1">
+
+        </div>
+    </div>
+
+    <script src="js/editorator/core.js"></script>
+    <script>
+        (function($) {
+            $().ready(function() {
+                $(window).on('edt-auth-success', function(data) {
+                    $("#initEdit").fadeIn("fast");
+                });
+
+                $.editorator();
+
+                $("#initEdit").bind("click", function() {
+                    $.editorator("initEdit");
+                    $(this).fadeOut("fast");
+                });
+            });
+        })(jQuery);
+    </script>
+</body>
+</html>
