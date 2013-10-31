@@ -40,6 +40,11 @@
     InvalidArgumentException.prototype.constructor = InvalidArgumentException;
     //=============== end init custom exceptions ================//
 
+    /**
+     * Options used by the plugin
+     *
+     * @type {{authUrl: string, authDataType: string, authCallback: Function, pushUrl: string, pushDataType: string, pushPostDataKey: string, pushCallback: Function, pullUrl: string, defaultErrorCallback: undefined, editableSelector: string, activePlaceholderClass: string, placeholderTpl: string, placeholderTextareaCss: {padding: number, border: string}, idDataKey: string}}
+     */
     var opt = {
         authUrl: 'auth.php',
         authDataType: 'json',
@@ -72,6 +77,11 @@
         idDataKey: 'edt-id'
     };
 
+    /**
+     * Events triggered
+     *
+     * @type {{beforeItemContentLoad: string, afterItemContentLoad: string, successItemContentLoad: string, errorItemContentLoad: string, onAuthSuccess: string, onAuthFail: string, onUnload: string, beforeContentPersist: string, afterContentPersist: string, successContentPersist: string, errorContentPersist: string}}
+     */
     var events = {
         // load item content
         beforeItemContentLoad: "edt-before-item-content-load",
@@ -89,12 +99,22 @@
         errorContentPersist: "edt-error-content-persist"
     };
 
+    /**
+     * Internal variables storage
+     *
+     * @type {{items: undefined, isAuth: boolean, isEdit: boolean}}
+     */
     var storage = {
         items: undefined,
         isAuth: false,
         isEdit: false
     };
 
+    /**
+     * Method accessible to the developer
+     *
+     * @type {{init: Function, initEdit: Function, persist: Function, unload: Function}}
+     */
     var methods = {
         init: function(options)
         {
@@ -137,7 +157,7 @@
             if(storage.isEdit) {
                 throw new RuntimeException("Already in edit mode");
             }
-            
+
             if(!storage.items) {
                 methods.init(options);
             }
@@ -214,6 +234,11 @@
         }
     };
 
+    /**
+     * Internal methods used inside the plugin
+     *
+     * @type {{init: Function, initItem: Function, initEdit: Function, initEditableItem: Function, call: Function}}
+     */
     var internals = {
         init: function()
         {
@@ -293,6 +318,11 @@
         }
     };
 
+    /**
+     * Basic Helpers
+     *
+     * @type {{isFunction: Function, contentWidth: Function, prepareText: Function}}
+     */
     var helpers = {
         isFunction: function(fn)
         {

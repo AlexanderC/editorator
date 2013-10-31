@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="2d9d12f3-b700-497b-969b-0b37c0abc4f0" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/editorator/core.js" afterPath="$PROJECT_DIR$/js/editorator/core.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
     </list>
     <ignored path="editorator.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -29,7 +28,7 @@
       <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="66" column="54" selection-start="2012" selection-end="2012" vertical-scroll-proportion="-9.166667" vertical-offset="770" max-vertical-offset="1455">
+            <state line="80" column="19" selection-start="2545" selection-end="2545" vertical-scroll-proportion="-20.416666" vertical-offset="710" max-vertical-offset="1455">
               <folding />
             </state>
           </provider>
@@ -38,7 +37,7 @@
       <file leaf-file-name="core.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/editorator/core.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="139" column="12" selection-start="4692" selection-end="4692" vertical-scroll-proportion="0.59749556" vertical-offset="1751" max-vertical-offset="5055">
+            <state line="322" column="6" selection-start="11415" selection-end="11415" vertical-scroll-proportion="6.0439563" vertical-offset="1530" max-vertical-offset="5505">
               <folding />
             </state>
           </provider>
@@ -330,14 +329,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="66" column="54" selection-start="2012" selection-end="2012" vertical-scroll-proportion="-9.166667" vertical-offset="770" max-vertical-offset="1455">
+        <state line="80" column="19" selection-start="2545" selection-end="2545" vertical-scroll-proportion="-20.416666" vertical-offset="710" max-vertical-offset="1455">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/editorator/core.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="139" column="12" selection-start="4692" selection-end="4692" vertical-scroll-proportion="0.59749556" vertical-offset="1751" max-vertical-offset="5055">
+        <state line="322" column="6" selection-start="11415" selection-end="11415" vertical-scroll-proportion="6.0439563" vertical-offset="1530" max-vertical-offset="5505">
           <folding />
         </state>
       </provider>
