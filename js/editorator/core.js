@@ -41,14 +41,14 @@
     //=============== end init custom exceptions ================//
 
     var opt = {
-        authUrl: 'engine/auth.php',
+        authUrl: 'auth.php',
         authDataType: 'json',
         authCallback: function(data) {
             try {
                 return !!data.ok;
             } catch (e) { return false; }
         },
-        pushUrl: 'engine/push.php',
+        pushUrl: 'push.php',
         pushDataType: 'json',
         pushCallback: function(data) {
             try {
@@ -59,7 +59,7 @@
                 }
             } catch (e) { return false; }
         },
-        pullUrl: "engine/pull.php",
+        pullUrl: "pull.php",
         defaultErrorCallback: undefined,
         editableSelector: '.edt-editable',
         activePlaceholderClass: 'edt-active-plh',

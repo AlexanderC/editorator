@@ -2,19 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2d9d12f3-b700-497b-969b-0b37c0abc4f0" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/editorator.iml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/engine/auth.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/editorator/core.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/css/main.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/php.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/engine/pull.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/editorator/push.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/scopes/scope_settings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/LICENSE" afterPath="$PROJECT_DIR$/LICENSE" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/editorator/core.js" afterPath="$PROJECT_DIR$/js/editorator/core.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
     </list>
     <ignored path="editorator.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -37,19 +27,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="index.html" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="40" column="0" selection-start="1016" selection-end="1016" vertical-scroll-proportion="-9.166667" vertical-offset="380" max-vertical-offset="1020">
+            <state line="43" column="12" selection-start="1096" selection-end="1096" vertical-scroll-proportion="0.6448598" vertical-offset="300" max-vertical-offset="1230">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="core.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="core.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/editorator/core.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="242" column="56" selection-start="8181" selection-end="8181" vertical-scroll-proportion="0.43649372" vertical-offset="3386" max-vertical-offset="4035">
+            <state line="71" column="6" selection-start="2574" selection-end="2574" vertical-scroll-proportion="0.0" vertical-offset="866" max-vertical-offset="4035">
               <folding />
             </state>
           </provider>
@@ -75,8 +65,9 @@
       <list>
         <option value="$PROJECT_DIR$/engine/auth.php" />
         <option value="$PROJECT_DIR$/js/editorator/push.php" />
-        <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/engine/pull.php" />
+        <option value="$PROJECT_DIR$/LICENSE" />
+        <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/js/editorator/core.js" />
       </list>
     </option>
@@ -310,13 +301,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="40" column="0" selection-start="1016" selection-end="1016" vertical-scroll-proportion="-9.166667" vertical-offset="380" max-vertical-offset="1020">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/engine/pull.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="9" column="55" selection-start="262" selection-end="262" vertical-scroll-proportion="0.14018692" vertical-offset="0" max-vertical-offset="535">
@@ -324,9 +308,33 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="559">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LICENSE">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="51" selection-start="51" selection-end="51" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4275">
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
+        <state />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/js/editorator/core.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="242" column="56" selection-start="8181" selection-end="8181" vertical-scroll-proportion="0.43649372" vertical-offset="3386" max-vertical-offset="4035">
+        <state line="71" column="6" selection-start="2574" selection-end="2574" vertical-scroll-proportion="0.0" vertical-offset="866" max-vertical-offset="4035">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="43" column="12" selection-start="1096" selection-end="1096" vertical-scroll-proportion="0.6448598" vertical-offset="300" max-vertical-offset="1230">
           <folding />
         </state>
       </provider>

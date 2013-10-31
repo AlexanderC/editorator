@@ -37,9 +37,7 @@
     <button id="initEdit">Edit this page!</button>
 
     <div class="content">
-        <div class="header edt-editable" data-edt-id="content-header-1">
-
-        </div>
+        <div class="header edt-editable" data-edt-id="content-header-1"></div>
     </div>
 
     <script src="js/editorator/core.js"></script>
@@ -50,7 +48,23 @@
                     $("#initEdit").fadeIn("fast");
                 });
 
-                $.editorator();
+                $(window).on('edt-before-item-content-load', function(event, item) {
+                    item.html("<h1>Loading content...</h1>");
+                });
+
+                $(window).on('edt-success-item-content-load', function(event, item) {
+                    item.html('');
+                });
+
+                $(window).on('edt-error-item-content-load', function(event, item) {
+                    item.html("<h1>Error while loading content!!!</h1>");
+                });
+
+                $.editorator({
+                    authUrl: 'engine/auth.php',
+                    pushUrl: 'engine/push.php',
+                    pullUrl: "engine/pull.php"
+                });
 
                 $("#initEdit").bind("click", function() {
                     $.editorator("initEdit");
