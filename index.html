@@ -37,7 +37,7 @@
     <fieldset>
         <button id="initEdit">Edit</button>
         <button id="initSave">Save</button>
-        <button id="initUnload">Unload Plugin</button>
+        <button id="initUnload">Unload Plugin(de facto exit edit mode)</button>
     </fieldset>
 
     <div class="content">
@@ -63,7 +63,7 @@
                     });
 
                     $("#initUnload").bind("click", function() {
-                        $.editorator("unload");
+                        $.editorator("unload", false);
                         $("#initEdit").fadeIn("fast");
                     });
                 });

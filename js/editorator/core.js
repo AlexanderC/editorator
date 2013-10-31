@@ -212,8 +212,10 @@
                 dataType: opt.pushDataType
             });
         },
-        unload: function()
+        unload: function(all)
         {
+            all = (undefined === all) ? true : !!all;
+
             if(!storage.items) {
                 throw new RuntimeException("You must init this first");
             }
@@ -228,9 +230,12 @@
 
             // TODO: unload all the things
             $(window).trigger(events.onUnload, [storage.items]);
-            storage.items = undefined;
-            storage.isAuth = false;
             storage.isEdit = false;
+
+            if(all) {
+                storage.items = undefined;
+                storage.isAuth = false;
+            }
         }
     };
 
