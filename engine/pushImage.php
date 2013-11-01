@@ -28,7 +28,7 @@ if(!in_array($extension, $allowedExtensions)) {
 $file = sprintf("%s/%s-%s.%s", $storage, md5($name), md5(microtime(true)), $extension);
 
 if(!file_put_contents($file, $data, LOCK_EX | LOCK_NB)
-    && resizeImg($file, (int) $size['width'], (int) $size['height'])) {
+    || !resizeImg($file, (int) $size['width'], (int) $size['height'])) {
     throw new \RuntimeException("Unable to persist file");
 }
 
@@ -69,18 +69,18 @@ function resizeImg($image, $newwidth, $newheight){
     imagecopyresized($thumb, $source, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);
 
     if(preg_match("/.jpg/i", $image)){
-        return imagejpeg($thumb, $image, 100);
+        return imagejpeg($thumb, $image);
     }
     if(preg_match("/.jpeg/i", $image)){
-        return imagejpeg($thumb, $image, 100);
+        return imagejpeg($thumb, $image);
     }
     if(preg_match("/.jpeg/i", $image)){
-        return imagejpeg($thumb, $image, 100);
+        return imagejpeg($thumb, $image);
     }
     if(preg_match("/.png/i", $image)){
-        return imagepng($thumb, $image, 100);
+        return imagepng($thumb, $image);
     }
     if(preg_match("/.gif/i", $image)){
-        return imagegif($thumb, $image, 100);
+        return imagegif($thumb, $image);
     }
 }
