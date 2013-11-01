@@ -106,7 +106,7 @@
         init: function(options)
         {
             if(!$.editorator) {
-                throw new RuntimeException("Editorator should be instantiated first");
+                throw new RuntimeException("Imaginator should be instantiated first");
             }
 
             if(storage.items) {
