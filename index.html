@@ -32,6 +32,12 @@
         #initEdit, #initSave, #initUnload {
             display: none;
         }
+
+        .post-image {
+            border: 1px solid #000;
+            width: 200px;
+            height: 200px;
+        }
     </style>
 
     <fieldset>
@@ -42,9 +48,14 @@
 
     <div class="content">
         <div class="header edt-editable" data-edt-id="content-header-1"></div>
+
+        <div class="header edt-editable" data-edt-id="content-body-1"></div>
+
+        <img src="" class="post-image imn-editable" data-edt-id="post-image-1" data-imn-size='{"width":400,"height":400}'/>
     </div>
 
     <script src="js/editorator/core.js"></script>
+    <script src="js/editorator/imaginator.js"></script>
     <script>
         (function($) {
             $().ready(function() {
@@ -55,15 +66,18 @@
 
                     $("#initEdit").bind("click", function() {
                         $.editorator("initEdit");
+                        $.imaginator("initEdit");
                         $(this).fadeOut("fast");
                     });
 
                     $("#initSave").bind("click", function() {
                         $.editorator("persist");
+                        $.imaginator("persist");
                     });
 
                     $("#initUnload").bind("click", function() {
                         $.editorator("unload", false);
+                        $.imaginator("unload", false);
                         $("#initEdit").fadeIn("fast");
                     });
                 });
@@ -84,6 +98,9 @@
                     authUrl: 'engine/auth.php',
                     pushUrl: 'engine/push.php',
                     pullUrl: "engine/pull.php"
+                });
+                $.imaginator({
+                    pushUrl: 'engine/pushImage.php'
                 });
             });
         })(jQuery);

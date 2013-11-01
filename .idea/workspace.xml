@@ -2,8 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2d9d12f3-b700-497b-969b-0b37c0abc4f0" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/editorator/imaginator.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/engine/pushImage.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/editorator/core.js" afterPath="$PROJECT_DIR$/js/editorator/core.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/engine/pull.php" afterPath="$PROJECT_DIR$/engine/pull.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/engine/push.php" afterPath="$PROJECT_DIR$/engine/push.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="editorator.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -26,10 +32,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="index.html" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="39" column="70" selection-start="1062" selection-end="1062" vertical-scroll-proportion="0.38317758" vertical-offset="380" max-vertical-offset="1455">
+            <state line="54" column="10" selection-start="1529" selection-end="1529" vertical-scroll-proportion="-9.166667" vertical-offset="590" max-vertical-offset="1710">
               <folding />
             </state>
           </provider>
@@ -38,8 +44,28 @@
       <file leaf-file-name="core.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/editorator/core.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="236" column="39" selection-start="8336" selection-end="8336" vertical-scroll-proportion="0.0" vertical-offset="3120" max-vertical-offset="5580">
+            <state line="201" column="16" selection-start="7030" selection-end="7223" vertical-scroll-proportion="0.0" vertical-offset="2865" max-vertical-offset="5685">
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="imaginator.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/editorator/imaginator.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="275" column="43" selection-start="9385" selection-end="9385" vertical-scroll-proportion="0.0" vertical-offset="4029" max-vertical-offset="5460">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="pushImage.php" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/engine/pushImage.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="17" column="32" selection-start="491" selection-end="491" vertical-scroll-proportion="0.47663552" vertical-offset="0" max-vertical-offset="1380">
+              <folding>
+                <element signature="e#6#92#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -64,11 +90,14 @@
       <list>
         <option value="$PROJECT_DIR$/engine/auth.php" />
         <option value="$PROJECT_DIR$/js/editorator/push.php" />
-        <option value="$PROJECT_DIR$/engine/pull.php" />
         <option value="$PROJECT_DIR$/LICENSE" />
-        <option value="$PROJECT_DIR$/engine/push.php" />
+        <option value="$PROJECT_DIR$/engine/pull.php" />
         <option value="$PROJECT_DIR$/js/editorator/core.js" />
+        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/engine/push.php" />
+        <option value="$PROJECT_DIR$/js/editorator/imaginator.js" />
+        <option value="$PROJECT_DIR$/engine/pushImage.php" />
       </list>
     </option>
   </component>
@@ -152,6 +181,24 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="engine" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="editorator" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="editorator" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="engine" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="images" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -295,13 +342,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/engine/pull.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="55" selection-start="262" selection-end="262" vertical-scroll-proportion="0.14018692" vertical-offset="0" max-vertical-offset="535">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="559">
@@ -319,26 +359,63 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/engine/push.php">
+    <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="26" selection-start="118" selection-end="120" vertical-scroll-proportion="0.19626169" vertical-offset="0" max-vertical-offset="535">
-          <folding>
-            <element signature="e#6#92#0" expanded="true" />
-          </folding>
+        <state line="0" column="15" selection-start="15" selection-end="15" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="559">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/editorator/core.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="236" column="39" selection-start="8336" selection-end="8336" vertical-scroll-proportion="0.0" vertical-offset="3120" max-vertical-offset="5580">
+        <state line="201" column="16" selection-start="7030" selection-end="7223" vertical-scroll-proportion="0.0" vertical-offset="2865" max-vertical-offset="5685">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="39" column="70" selection-start="1062" selection-end="1062" vertical-scroll-proportion="0.38317758" vertical-offset="380" max-vertical-offset="1455">
+        <state line="54" column="10" selection-start="1529" selection-end="1529" vertical-scroll-proportion="-9.166667" vertical-offset="590" max-vertical-offset="1710">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/engine/images/75ab9caf73a11b6c19e6a788b0b3e28d-146c277e2c0683eebfa1704ffd316a31.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/engine/pull.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="0" selection-start="457" selection-end="555" vertical-scroll-proportion="0.47663552" vertical-offset="0" max-vertical-offset="535">
+          <folding>
+            <element signature="e#6#92#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/engine/push.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="22" column="1" selection-start="586" selection-end="586" vertical-scroll-proportion="0.6168224" vertical-offset="0" max-vertical-offset="535">
+          <folding>
+            <element signature="e#6#92#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/editorator/imaginator.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="275" column="43" selection-start="9385" selection-end="9385" vertical-scroll-proportion="0.0" vertical-offset="4029" max-vertical-offset="5460">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/engine/pushImage.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="32" selection-start="491" selection-end="491" vertical-scroll-proportion="0.47663552" vertical-offset="0" max-vertical-offset="1380">
+          <folding>
+            <element signature="e#6#92#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

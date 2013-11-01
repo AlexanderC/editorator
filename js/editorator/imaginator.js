@@ -1,5 +1,5 @@
 /**
- * Created by AlexanderC on 10/31/13.
+ * Created by AlexanderC on 11/1/13.
  */
 
 (function ($) {
@@ -40,42 +40,22 @@
     InvalidArgumentException.prototype.constructor = InvalidArgumentException;
     //=============== end init custom exceptions ================//
 
-    /**
-     * Options used by the plugin
-     *
-     * @type {{authUrl: string, authDataType: string, authCallback: Function, pushUrl: string, pushDataType: string, pushPostDataKey: string, pushCallback: Function, pullUrl: string, pullPostDataKey: string, defaultErrorCallback: undefined, editableSelector: string, activePlaceholderClass: string, placeholderTpl: string, placeholderTextareaCss: {padding: number, border: string}, idDataKey: string}}
-     */
     var opt = {
-        authUrl: 'auth.php',
-        authDataType: 'json',
-        authCallback: function(data) {
-            try {
-                return !!data.ok;
-            } catch (e) { return false; }
+        imageSizeDataKey: 'imn-size',
+        editableSelector: 'img.imn-editable',
+        pushUrl: 'pushImage.php',
+        pushPostDataKey: 'image',
+        pushPostNameKey: 'name',
+        pushPostImgSizeKey: 'size',
+        pushCallback: function(image, data)
+        {
+            image.attr('src', data.src);
         },
-        pushUrl: 'push.php',
-        pushDataType: 'json',
-        pushPostDataKey: 'items',
-        pushCallback: function(data) {
-            try {
-                if(data.ok) {
-                    alert("Changes were successfully saved.");
-                } else {
-                    alert("An Error Occured. Please try later...");
-                }
-            } catch (e) { return false; }
-        },
-        pullUrl: "pull.php",
-        pullPostDataKey: 'item-id',
-        defaultErrorCallback: undefined,
-        editableSelector: '.edt-editable',
-        activePlaceholderClass: 'edt-active-plh',
-        placeholderTpl: "<textarea class='%class%'></textarea>",
-        placeholderTextareaCss: {
-            padding: 0,
-            border: "1px dotted #009999"
-        },
-        idDataKey: 'edt-id'
+        tplFormClass: "imn-tpl-image",
+        editFormTpl: "<input type='file' class='%class%'/>",
+        editCss: {
+            display: "none"
+        }
     };
 
     /**
@@ -85,44 +65,40 @@
      */
     var events = {
         // load item content
-        beforeItemContentLoad: "edt-before-item-content-load",
-        afterItemContentLoad: "edt-after-item-content-load",
-        successItemContentLoad: "edt-success-item-content-load",
-        errorItemContentLoad: "edt-error-item-content-load",
+        beforeItemContentLoad: "imn-before-item-content-load",
+        afterItemContentLoad: "imn-after-item-content-load",
+        successItemContentLoad: "imn-success-item-content-load",
+        errorItemContentLoad: "imn-error-item-content-load",
         // authentication
-        onAuthSuccess: "edt-auth-success",
-        onAuthFail: "edt-auth-fail",
-        onUnload: "edt-unload",
+        onAuthSuccess: "imn-auth-success",
+        onAuthFail: "imn-auth-fail",
+        onUnload: "imn-unload",
         // content persist
-        beforeContentPersist: "edt-before-content-persist",
-        afterContentPersist: "edt-after-content-persist",
-        successContentPersist: "edt-success-content-persist",
-        errorContentPersist: "edt-error-content-persist"
+        beforeContentPersist: "imn-before-content-persist",
+        afterContentPersist: "imn-after-content-persist",
+        successContentPersist: "imn-success-content-persist",
+        errorContentPersist: "imn-error-content-persist"
     };
 
     /**
      * Internal variables storage
      *
-     * @type {{items: undefined, isAuth: boolean, isEdit: boolean}}
+     * @type {{items: undefined, isAuth: boolean, isEdit: boolean, coreOptions: undefined}}
      */
     var storage = {
         items: undefined,
         isAuth: false,
-        isEdit: false
+        isEdit: false,
+        coreOptions: undefined
     };
 
-    /**
-     * Public Methods available by the user
-     *
-     * @type {{getOptions: Function, init: Function, initEdit: Function, persist: Function, unload: Function}}
-     */
     var methods = {
-        getOptions: function()
-        {
-            return opt;
-        },
         init: function(options)
         {
+            if(!$.editorator) {
+                throw new RuntimeException("Editorator should be instantiated first");
+            }
+
             if(storage.items) {
                 methods.unload();
             }
@@ -131,29 +107,30 @@
             delete options;
 
             storage.items = $(opt.editableSelector);
+            storage.coreOptions = $.editorator('getOptions');
 
             storage.items.each(function() {
                 var item = $(this);
 
-                if(!item.data(opt.idDataKey)) {
+                if(!item.data(storage.coreOptions.idDataKey)) {
                     throw new RuntimeException("Unable to find unique identifier in item data");
                 }
             });
 
-            internals.init();
-
-            // authenticate user
-            internals.call(opt.authUrl, undefined, function(data) {
-                if(true === opt.authCallback(data)) {
-                    storage.isAuth = true;
-                    $(window).trigger(events.onAuthSuccess, [data]);
-                } else {
-                    storage.isAuth = false;
-                    $(window).trigger(events.onAuthFail, [data]);
-                }
-            }, {
-                dataType: opt.authDataType
+            /**
+             * bind this with core auth mechanism
+             */
+            $(window).on('edt-auth-success', function(data) {
+                storage.isAuth = true;
+                $(window).trigger(events.onAuthSuccess, [data]);
             });
+
+            $(window).on('edt-auth-fail', function(data) {
+                storage.isAuth = false;
+                $(window).trigger(events.onAuthFail, [data]);
+            });
+
+            internals.init();
 
             return storage.items;
         },
@@ -192,17 +169,17 @@
             storage.items.each(function() {
                 var item = $(this);
 
-                data[item.data(opt.idDataKey)] = item.find('.' + opt.activePlaceholderClass).val();
+                data[item.data(storage.coreOptions.idDataKey)] = item.attr('src');
             });
 
             var postData = {};
-            postData[opt.pushPostDataKey] = data;
+            postData[storage.coreOptions.pushPostDataKey] = data;
 
-            internals.call(opt.pushUrl, postData, function(data) {
+            internals.call(storage.coreOptions.pushUrl, postData, function(data) {
                 $(window).trigger(events.successContentPersist, [storage.items, data]);
 
-                if(helpers.isFunction(opt.pushCallback)) {
-                    opt.pushCallback(data);
+                if(helpers.isFunction(storage.coreOptions.pushCallback)) {
+                    storage.coreOptions.pushCallback(data);
                 }
             }, {
                 complete: function(jqXHR, textStatus)
@@ -214,7 +191,7 @@
                     $(window).trigger(events.errorContentPersist, [storage.items, jqXHR, textStatus, errorThrown]);
                 },
                 type: "POST",
-                dataType: opt.pushDataType
+                dataType: storage.coreOptions.pushDataType
             });
         },
         unload: function(all)
@@ -228,8 +205,8 @@
             if(storage.isEdit) {
                 storage.items.each(function() {
                     var item = $(this);
-                    var content = item.find('.' + opt.activePlaceholderClass).val();
-                    item.html(content);
+                    item.unbind("click");
+                    item.find("input." + opt.tplFormClass).remove();
                 });
             }
 
@@ -239,15 +216,11 @@
             if(all) {
                 storage.items = undefined;
                 storage.isAuth = false;
+                storage.coreOptions = undefined;
             }
         }
     };
 
-    /**
-     * Internal methods used inside the plugin
-     *
-     * @type {{init: Function, initItem: Function, initEdit: Function, initEditableItem: Function, call: Function}}
-     */
     var internals = {
         init: function()
         {
@@ -260,12 +233,12 @@
             $(window).trigger(events.beforeItemContentLoad, [item]);
 
             var data = {};
-            data[opt.pullPostDataKey] = item.data(opt.idDataKey);
+            data[storage.coreOptions.pullPostDataKey] = item.data(storage.coreOptions.idDataKey);
 
-            internals.call(opt.pullUrl, data, function(data) {
+            internals.call(storage.coreOptions.pullUrl, data, function(data) {
                 $(window).trigger(events.successItemContentLoad, [item, data]);
 
-                item.html(data);
+                item.attr("src", $.trim(data));
             }, {
                 complete: function(jqXHR, textStatus)
                 {
@@ -285,26 +258,55 @@
             });
         },
         initEditableItem: function(item) {
-            var itemPaddingTB = parseInt(item.css("padding-top").replace("px", ""))
-                + parseInt(item.css("padding-bottom").replace("px", ""));
+            var plh = $(opt.editFormTpl.replace("%class%", opt.tplFormClass));
+            plh.css(opt.editCss);
 
-            var itemParameters = {
-                width: helpers.contentWidth(item),
-                height: item[0].scrollHeight - itemPaddingTB,
-                "font-style": item.css('font-style'),
-                "font-family": item.css('font-family'),
-                "font-size": item.css('font-size'),
-                "font-weight": item.css('font-weight'),
-                "font-variant": item.css('font-variant'),
-                "font-stretch": item.css('font-stretch'),
-                "text-justify": item.css('text-justify')
-            };
-            var plh = $(opt.placeholderTpl.replace("%class%", opt.activePlaceholderClass));
-            plh.css($.extend(itemParameters, opt.placeholderTextareaCss));
+            item.append(plh);
 
-            var content = item.html();
-            plh.html(helpers.prepareText(content));
-            item.html(plh);
+            item.bind("click", function() {
+                $(this).find("input." + opt.tplFormClass)[0].click();
+            });
+
+            item.find("input." + opt.tplFormClass).bind("change", function() {
+                var input = $(this);
+
+                var file = input[0].files[0];
+                var reader = new FileReader();
+
+                reader.readAsDataURL(file);
+                reader.onload = function(event)
+                {
+                    var result = event.target.result;
+                    var name = file.name;
+
+                    var data = {};
+                    data[opt.pushPostNameKey] = name;
+                    data[opt.pushPostImgSizeKey] = item.data(opt.imageSizeDataKey) || {
+                        width: item.width(),
+                        height: item.height()
+                    };
+                    data[opt.pushPostDataKey] = result;
+
+                    internals.call(opt.pushUrl, data, function(data) {
+                        $(window).trigger(events.successContentPersist, [storage.items, data]);
+
+                        if(helpers.isFunction(opt.pushCallback)) {
+                            opt.pushCallback(item, data);
+                        }
+                    }, {
+                        complete: function(jqXHR, textStatus)
+                        {
+                            $(window).trigger(events.afterContentPersist, [item, jqXHR, textStatus]);
+                        },
+                        error: function(jqXHR, textStatus, errorThrown)
+                        {
+                            $(window).trigger(events.errorContentPersist, [item, jqXHR, textStatus, errorThrown]);
+                        },
+                        type: "POST",
+                        dataType: "json"
+                    });
+                };
+            });
         },
         call: function(url, data, callback, options)
         {
@@ -320,7 +322,7 @@
                 'data': data,
                 async: true,
                 success: callback,
-                error: opt.defaultErrorCallback || function(jqXHR, textStatus, errorThrown)
+                error: storage.coreOptions.defaultErrorCallback || function(jqXHR, textStatus, errorThrown)
                 {
                     console.log(errorThrown);
                 }
@@ -330,27 +332,10 @@
         }
     };
 
-    /**
-     * Basic Helpers
-     *
-     * @type {{isFunction: Function, contentWidth: Function, prepareText: Function}}
-     */
     var helpers = {
         isFunction: function(fn)
         {
             return fn instanceof Function;
-        },
-        contentWidth: function(item)
-        {
-            var sensor = $('<div />').css({margin: 0, padding: 0});
-            item.append(sensor);
-            var width = sensor.width();
-            sensor.remove();
-            return width;
-        },
-        prepareText: function(content)
-        {
-            return $.trim(content).replace(/\s+/g, ' ');
         }
     };
 
@@ -360,14 +345,14 @@
      * @param method
      * @returns {*}
      */
-    $.editorator = function (method) {
+    $.imaginator = function (method) {
         // Method calling logic
         if (methods[method]) {
             return methods[ method ].apply(this, Array.prototype.slice.call(arguments, 1));
         } else if (typeof method === 'object' || !method) {
             return methods.init.apply(this, arguments);
         } else {
-            $.error('Method ' + method + ' does not exist on jQuery.editorator');
+            $.error('Method ' + method + ' does not exist on jQuery.imaginator');
         }
     };
 })(jQuery);
