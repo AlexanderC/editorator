@@ -40,6 +40,11 @@
     InvalidArgumentException.prototype.constructor = InvalidArgumentException;
     //=============== end init custom exceptions ================//
 
+    /**
+     * Options use internally
+     *
+     * @type {{imageSizeDataKey: string, editableSelector: string, pushUrl: string, pushPostDataKey: string, pushPostNameKey: string, pushPostImgSizeKey: string, pushCallback: Function, tplFormClass: string, editFormTpl: string, editCss: {display: string}}}
+     */
     var opt = {
         imageSizeDataKey: 'imn-size',
         editableSelector: 'img.imn-editable',
@@ -92,6 +97,11 @@
         coreOptions: undefined
     };
 
+    /**
+     * Public method called by user
+     *
+     * @type {{init: Function, initEdit: Function, persist: Function, unload: Function}}
+     */
     var methods = {
         init: function(options)
         {
@@ -221,6 +231,11 @@
         }
     };
 
+    /**
+     * Internal methods used
+     *
+     * @type {{init: Function, initItem: Function, initEdit: Function, initEditableItem: Function, call: Function}}
+     */
     var internals = {
         init: function()
         {
@@ -332,6 +347,11 @@
         }
     };
 
+    /**
+     * Some helpers
+     *
+     * @type {{isFunction: Function}}
+     */
     var helpers = {
         isFunction: function(fn)
         {
