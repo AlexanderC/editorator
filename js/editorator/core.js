@@ -43,9 +43,10 @@
     /**
      * Options used by the plugin
      *
-     * @type {{authUrl: string, authDataType: string, authCallback: Function, pushUrl: string, pushDataType: string, pushPostDataKey: string, pushCallback: Function, pullUrl: string, pullPostDataKey: string, defaultErrorCallback: undefined, editableSelector: string, activePlaceholderClass: string, placeholderTpl: string, placeholderTextareaCss: {padding: number, border: string}, idDataKey: string}}
+     * @type {{nl2br: boolean, authUrl: string, authDataType: string, authCallback: Function, pushUrl: string, pushDataType: string, pushPostDataKey: string, pushCallback: Function, pullUrl: string, pullPostDataKey: string, defaultErrorCallback: undefined, editableSelector: string, activePlaceholderClass: string, placeholderTpl: string, placeholderTextareaCss: {padding: number, border: string}, idDataKey: string}}
      */
     var opt = {
+        nl2br: true,
         authUrl: 'auth.php',
         authDataType: 'json',
         authCallback: function(data) {
@@ -193,6 +194,10 @@
                 var item = $(this);
 
                 data[item.data(opt.idDataKey)] = item.find('.' + opt.activePlaceholderClass).val();
+
+                if(opt.nl2br) {
+                    data[item.data(opt.idDataKey)] = data[item.data(opt.idDataKey)].replace(/\n/g, "<br/>");
+                }
             });
 
             var postData = {};
@@ -229,6 +234,11 @@
                 storage.items.each(function() {
                     var item = $(this);
                     var content = item.find('.' + opt.activePlaceholderClass).val();
+
+                    if(opt.nl2br) {
+                        content = content.replace(/\n/g, "<br/>");
+                    }
+
                     item.html(content);
                 });
             }
@@ -350,7 +360,13 @@
         },
         prepareText: function(content)
         {
-            return $.trim(content).replace(/\s+/g, ' ');
+            var result = $.trim(content).replace(/\s+/g, ' ');
+
+            if(opt.nl2br) {
+                result = result.replace(/<\s*br\s*\/?\s*>/gi, "\n");
+            }
+
+            return result;
         }
     };
 

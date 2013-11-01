@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2d9d12f3-b700-497b-969b-0b37c0abc4f0" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/main.css" afterPath="$PROJECT_DIR$/css/main.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/editorator/core.js" afterPath="$PROJECT_DIR$/js/editorator/core.js" />
     </list>
     <ignored path="editorator.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -29,36 +28,16 @@
       <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="6" selection-start="479" selection-end="479" vertical-scroll-proportion="-10.0" vertical-offset="0" max-vertical-offset="1335">
+            <state line="14" column="7" selection-start="471" selection-end="471" vertical-scroll-proportion="-8.75" vertical-offset="0" max-vertical-offset="1335">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="pushImage.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/engine/pushImage.php">
+      <file leaf-file-name="core.js" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/js/editorator/core.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="83" column="40" selection-start="2608" selection-end="2608" vertical-scroll-proportion="-19.166666" vertical-offset="785" max-vertical-offset="1380">
-              <folding>
-                <element signature="e#6#92#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="imaginator.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/editorator/imaginator.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="375" column="9" selection-start="12981" selection-end="12981" vertical-scroll-proportion="0.0" vertical-offset="4944" max-vertical-offset="5760">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="main.css" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/css/main.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="21" column="1" selection-start="344" selection-end="344" vertical-scroll-proportion="0.56350625" vertical-offset="0" max-vertical-offset="559">
+            <state line="238" column="66" selection-start="8473" selection-end="8473" vertical-scroll-proportion="0.61538464" vertical-offset="3234" max-vertical-offset="5925">
               <folding />
             </state>
           </provider>
@@ -85,7 +64,6 @@
         <option value="$PROJECT_DIR$/engine/auth.php" />
         <option value="$PROJECT_DIR$/js/editorator/push.php" />
         <option value="$PROJECT_DIR$/LICENSE" />
-        <option value="$PROJECT_DIR$/js/editorator/core.js" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/engine/push.php" />
         <option value="$PROJECT_DIR$/engine/pull.php" />
@@ -93,6 +71,7 @@
         <option value="$PROJECT_DIR$/js/editorator/imaginator.js" />
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/css/main.css" />
+        <option value="$PROJECT_DIR$/js/editorator/core.js" />
       </list>
     </option>
   </component>
@@ -343,13 +322,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/editorator/core.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="206" column="16" selection-start="7240" selection-end="7240" vertical-scroll-proportion="-2.087912" vertical-offset="4230" max-vertical-offset="5685">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/engine/pull.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="26" column="12" selection-start="702" selection-end="702" vertical-scroll-proportion="0.6168224" vertical-offset="0" max-vertical-offset="535">
@@ -357,32 +329,39 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/js/editorator/imaginator.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="375" column="9" selection-start="12981" selection-end="12981" vertical-scroll-proportion="9.395604" vertical-offset="495" max-vertical-offset="5760">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/engine/pushImage.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="83" column="40" selection-start="2608" selection-end="2608" vertical-scroll-proportion="-19.166666" vertical-offset="785" max-vertical-offset="1380">
+        <state line="83" column="40" selection-start="2608" selection-end="2608" vertical-scroll-proportion="2.2149532" vertical-offset="60" max-vertical-offset="1380">
           <folding>
             <element signature="e#6#92#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/editorator/imaginator.js">
+    <entry file="file://$PROJECT_DIR$/css/main.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="375" column="9" selection-start="12981" selection-end="12981" vertical-scroll-proportion="0.0" vertical-offset="4944" max-vertical-offset="5760">
+        <state line="21" column="1" selection-start="344" selection-end="344" vertical-scroll-proportion="0.56350625" vertical-offset="0" max-vertical-offset="559">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="6" selection-start="479" selection-end="479" vertical-scroll-proportion="-10.0" vertical-offset="0" max-vertical-offset="1335">
+        <state line="14" column="7" selection-start="471" selection-end="471" vertical-scroll-proportion="-8.75" vertical-offset="0" max-vertical-offset="1335">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/css/main.css">
+    <entry file="file://$PROJECT_DIR$/js/editorator/core.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="1" selection-start="344" selection-end="344" vertical-scroll-proportion="0.56350625" vertical-offset="0" max-vertical-offset="559">
+        <state line="238" column="66" selection-start="8473" selection-end="8473" vertical-scroll-proportion="0.61538464" vertical-offset="3234" max-vertical-offset="5925">
           <folding />
         </state>
       </provider>
